@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*****************************
+greetings
+*****************************/
+.greetings__text {
+  display: none;
+}
+
+.greetings__text.active {
+  display: block;
+}

@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-do App</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container">
@@ -13,7 +14,14 @@
         <span id="js-hours" class="clock__hours">00</span>:<span id="js-mins" class="clock__mins">00</span>:<span id="js-secs" class="clock__secs">00</span>
       </h1>
     </div>
+    <div class="greetings">
+      <h2 id="js-greetingsText" class="greetings__text"></h2>
+      <form id="js-greetingsForm">
+        <input id="js-greetingsInput" class="greetings__input" type="text" placeholder="What's your name?🤓">
+      </form>
+    </div>
   </div>
   <script src="js/clock.js"></script>
+  <script src="js/greetings.js"></script>
 </body>
 </html>

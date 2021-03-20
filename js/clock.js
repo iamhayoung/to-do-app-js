@@ -17,9 +17,9 @@ const setClock = () => {
   window.setInterval(updateClock, 1000);
 }
 
-const init = () => {
+const clockInit = () => {
   updateClock();
   setClock();
 }
 
-init();
+clockInit();
