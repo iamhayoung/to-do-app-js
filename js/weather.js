@@ -1,18 +1,33 @@
-const weather = document.querySelector("#js-weather");
+const tempOutput = document.querySelector("#js-temp"),
+  areaOutput = document.querySelector("#js-area"),
+  skyOutput = document.querySelector("#js-sky")
 
 const API_KEY = "4ea346d8d7cecd5654877211ee09c0cf";
 
 let lat;
 let lon;
 
+const printWeather = (temp, area, sky) => {
+  tempOutput.innerText = `${temp}°`;
+  areaOutput.innerText = area;
+  skyOutput.innerText = sky;
+}
+
+const getWeather = (data) => {
+  let temp = data.main.temp;
+  let area = data.name;
+  let sky = data.weather[0].main;
+  printWeather(temp, area, sky);
+}
+
 const loadAPI = (lat, lon) => {
   lat = lat;
   lon = lon;
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => getWeather(data))
     .catch((error) => {
-      console.error('Fetch error:', error);
+      console.error('There has been a problem with your fetch operation:', error);
     });
 }
 

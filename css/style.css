@@ -59,6 +59,21 @@ container
 }
 
 /*****************************
+weather
+*****************************/
+.weather {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+}
+
+.weather__temp {
+  font-size: 26px;
+}
+
+/*****************************
 clock
 *****************************/
 .clock {
