@@ -17,7 +17,7 @@ const setUserNameLocalStorage = (userName) => {
 
 const handleGreetingsSubmit = (event) => {
   event.preventDefault();
-  clock.classList.remove("hidden");
+  clock.classList.add("showing")
   greetingsIntroText.classList.add("hidden");
   let userName = greetingsInput.value;
   setUserNameLocalStorage(userName);
@@ -28,15 +28,13 @@ const checkUserNameLocalStorage = () => {
 
   if (savedUserName) {
     // 로컬스토리지 userName 값이 존재한다면
-    clock.classList.remove("hidden");
-    greetingsIntroText.classList.add("hidden");
-    greetingsForm.classList.remove("showing");
+    clock.classList.add("showing")
     greetingsOutputText.classList.add("showing");
     greetingsOutputText.innerText = `Hello, ${savedUserName}🙌`;
   } else {
     // 로컬스토리지 userName 값이 존재하지 않는다면
-    clock.classList.add("hidden")
-    return;
+    greetingsIntroText.classList.add("showing");
+    greetingsForm.classList.add("showing");
   }
 }
 

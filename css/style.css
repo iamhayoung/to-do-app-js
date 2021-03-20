@@ -18,15 +18,20 @@ input {
 }
 
 /*****************************
-greetings
+clock
 *****************************/
-.greetings__form,
-.greetings__text {
+.clock {
   display: none;
 }
 
-.greetings__text.active {
-  display: block;
+/*****************************
+greetings
+*****************************/
+.greetings__form,
+.greetings__text,
+.greetings__intro-text,
+.greetings__form {
+  display: none;
 }
 
 /*****************************
