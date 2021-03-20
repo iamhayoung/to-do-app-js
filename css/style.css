@@ -41,6 +41,17 @@ container
   background-repeat: no-repeat;
   background-attachment: fixed;
   animation: fadeIn 0.5s linear;
+  color: #fff;
+}
+
+.container:before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 /*****************************
@@ -48,11 +59,16 @@ clock
 *****************************/
 .clock {
   display: none;
+  position: relative;
 }
 
 /*****************************
 greetings
 *****************************/
+.greetings {
+  position: relative;
+}
+
 .greetings__form,
 .greetings__text,
 .greetings__intro-text,
