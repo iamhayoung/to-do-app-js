@@ -1,0 +1,1 @@
+const weather = document.querySelector("#js-weather");
