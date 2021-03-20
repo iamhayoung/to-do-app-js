@@ -10,15 +10,16 @@
 </head>
 <body>
   <div class="container">
-    <div class="clock">
+    <div id="js-clock" class="clock">
       <h1 class="clock__output">
         <span id="js-hours" class="clock__hours">00</span>:<span id="js-mins" class="clock__mins">00</span>:<span id="js-secs" class="clock__secs">00</span>
       </h1>
     </div>
     <div class="greetings">
-      <h2 id="js-greetingsText" class="greetings__text"></h2>
+      <h2 id="js-greetingsIntroText" class="greetings__intro-text">Hello, what's your name?🤓</h2>
+      <h3 id="js-greetingsOutputText" class="greetings__output-text"></h3>
       <form id="js-greetingsForm" class="greetings__form showing">
-        <input id="js-greetingsInput" class="greetings__input" type="text" placeholder="What's your name?🤓">
+        <input id="js-greetingsInput" class="greetings__input" type="text" placeholder="Your name?">
       </form>
     </div>
   </div>

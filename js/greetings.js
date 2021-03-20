@@ -1,29 +1,47 @@
 const greetingsForm = document.querySelector("#js-greetingsForm"),
   greetingsInput = document.querySelector("#js-greetingsInput"),
-  greetingsText = document.querySelector("#js-greetingsText");
+  greetingsOutputText = document.querySelector("#js-greetingsOutputText"),
+  greetingsIntroText = document.querySelector("#js-greetingsIntroText"),
+  clock = document.querySelector("#js-clock");
 
-const printGreetings = (userNameValue) => {
-  greetingsText.innerText = `Hello, ${userNameValue}🙌`;
-  greetingsText.classList.add("showing");
+const printGreetings = (userName) => {
+  greetingsOutputText.innerText = `Hello, ${userName}🙌`;
+  greetingsOutputText.classList.add("showing");
 }
 
-const setUserNameLocalStorage = (userNameValue) => {
-  // 로컬스토리지 userName에 값이 있을때만 값을 셋팅하기.
-  localStorage.setItem('userName', userNameValue);
-
-  // 만약에 로컬스토리지userName에 값이 있으면 보여주게 하기
+const setUserNameLocalStorage = (userName) => {
+  localStorage.setItem("userName", userName);
   greetingsForm.classList.remove("showing");
-  printGreetings(userNameValue);
+  printGreetings(userName);
 }
 
 const handleGreetingsSubmit = (event) => {
   event.preventDefault();
-  let userNameValue = greetingsInput.value;
-  setUserNameLocalStorage(userNameValue);
+  clock.classList.remove("hidden");
+  greetingsIntroText.classList.add("hidden");
+  let userName = greetingsInput.value;
+  setUserNameLocalStorage(userName);
+}
+
+const checkUserNameLocalStorage = () => {
+  const savedUserName = localStorage.getItem("userName");
+
+  if (savedUserName) {
+    // 로컬스토리지 userName 값이 존재한다면
+    clock.classList.remove("hidden");
+    greetingsIntroText.classList.add("hidden");
+    greetingsForm.classList.remove("showing");
+    greetingsOutputText.classList.add("showing");
+    greetingsOutputText.innerText = `Hello, ${savedUserName}🙌`;
+  } else {
+    // 로컬스토리지 userName 값이 존재하지 않는다면
+    clock.classList.add("hidden")
+    return;
+  }
 }
 
 const greetingsInit = () => {
-  // 로컬스토리지 userName에 값이 있으면 첫화면은 인사말띄우기
+  checkUserNameLocalStorage();
   greetingsForm.addEventListener("submit", handleGreetingsSubmit)
 }
 
