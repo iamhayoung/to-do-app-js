@@ -3,12 +3,13 @@ const todoForm = document.querySelector("#js-todoForm"),
   todoList = document.querySelector("#js-todoList");
 
 let TODOS_ARRAY = [];
-let TODOS_OBJECT = [];
+let TODOS_OBJECT = {};
 let i = 1;
 
 // !투두 체크
 const handleTodoDone = (event) => {
   console.log(event.target);
+  // status
 }
 
 // !투두 삭제
@@ -23,8 +24,14 @@ const printTodos = () => {
   const label = document.createElement("label");
   const checkbox = document.createElement("input");
   const delBtn = document.createElement("span");
+
+  // 로컬스토리지에 저장된 todo 불러옴
+  const lsTodo = localStorage.getItem("toDo");
+  const parsedLsTodo = JSON.parse(lsTodo);
+  const savedTodo = parsedLsTodo.todo;
+
   // !todo텍스트 출력
-  label.innerText = TODOS_OBJECT.todo;
+  label.innerText = savedTodo;
 
   // element 출력
   div.classList.add("todo__checkbox");
@@ -53,7 +60,7 @@ const handleTodoSubmit = (event) => {
   event.preventDefault();
   let todosValue = todoInput.value;
   let number = i++;
-  TODOS_OBJECT = { "id": number,"todo": todosValue }
+  TODOS_OBJECT = { "id": number, "todo": todosValue, "status": "new" }
 
   //! 페이지 리로드 후 투두입력하면 원래 있던 Todo가 새Todo에 上書きされる
 
@@ -71,7 +78,7 @@ const checkTodosLocalStorage = () => {
   const savedTodo = localStorage.getItem("toDo");
 
   if (savedTodo) {
-    console.log('savedTodo')
+    // 로컬스토리지 toDo에 내용물이 있으면 printTodos를 실행
     printTodos();
   } else {
     return;
