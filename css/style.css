@@ -28,6 +28,10 @@ input {
   outline: none;
 }
 
+input[type='checkbox'] {
+  display: none;
+}
+
 /*****************************
 container
 *****************************/
@@ -204,7 +208,7 @@ todo
 .todo__checkbox {
   position: relative;
   background: rgba(0, 0, 0, 0.5);
-  padding: 20px 50px;
+  padding: 20px 60px;
   transition: 0.2s;
   cursor: pointer;
 }
@@ -219,10 +223,49 @@ todo
 }
 
 .todo__checkbox label {
+  position: relative;
   display: inline-block;
   width: 100%;
   font-weight: 300;
   cursor: pointer;
+}
+
+.todo__checkbox label:before {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: -38px;
+  margin-top: -8px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.todo__checkbox label:after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 6px;
+  height: 10px;
+  top: 50%;
+  left: -50px;
+  margin-top: -16px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  opacity: 0;
+  transform: rotate(45deg) translate3d(0, 2px, 0) scale3d(0.7, 0.7, 1)
+    translate(20px, -50%);
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+input[type='checkbox']:checked + label:before {
+  background: #1fd4aa;
+}
+input[type='checkbox']:checked + label:after {
+  opacity: 1;
+  transform: rotate(45deg) scale3d(1, 1, 1) translate(20px, -50%);
 }
 
 .todo__checkbox + .todo__checkbox {
@@ -242,7 +285,7 @@ todo
   color: red;
 }
 
-.todo__checkbox__done {
+.todo__checkbox__done label {
   text-decoration: line-through;
 }
 
