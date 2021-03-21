@@ -32,6 +32,10 @@ input[type='checkbox'] {
   display: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 /*****************************
 container
 *****************************/
@@ -185,7 +189,7 @@ todo
 }
 
 .todo__list {
-  max-height: 340px;
+  max-height: 320px;
   height: 100%;
   overflow-y: scroll;
   position: relative;
@@ -291,6 +295,29 @@ input[type='checkbox']:checked + label:after {
 
 .todo__checkbox__done label {
   text-decoration: line-through;
+}
+
+/*****************************
+footer
+*****************************/
+.github-logo {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+.github-logo i {
+  font-size: 32px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.github-logo:hover i {
+  opacity: 0.5;
+}
+
+.github-logo:active {
+  transform: scale(0.7);
 }
 
 /*****************************
