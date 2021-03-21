@@ -7,7 +7,7 @@ const greetingsForm = document.querySelector("#js-greetingsForm"),
   todo = document.querySelector("#js-todo");
 
 const printGreetings = (userName) => {
-  greetingsOutputText.innerHTML = `Hello, ${userName}<span class="shaking-hand">🖐</span>`;
+  greetingsOutputText.innerHTML = `Hello, ${userName}<span class="waving-hand">👋</span>`;
   greetingsOutputText.classList.add("showing");
 }
 
