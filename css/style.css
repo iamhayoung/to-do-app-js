@@ -18,6 +18,11 @@ input {
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+ul,
+li {
+  list-style: none;
+}
+
 /*****************************
 container
 *****************************/
