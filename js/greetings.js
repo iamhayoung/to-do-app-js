@@ -7,7 +7,7 @@ const greetingsForm = document.querySelector("#js-greetingsForm"),
   todo = document.querySelector("#js-todo");
 
 const printGreetings = (userName) => {
-  greetingsOutputText.innerText = `Hello, ${userName}🙌`;
+  greetingsOutputText.innerHTML = `Hello, ${userName}<span class="shaking-hand">🖐</span>`;
   greetingsOutputText.classList.add("showing");
 }
 
@@ -20,13 +20,17 @@ const setUserNameLocalStorage = (userName) => {
 const handleGreetingsSubmit = (event) => {
   event.preventDefault();
   let userName = greetingsInput.value;
-  setUserNameLocalStorage(userName);
 
-  // DOM제어
-  clock.classList.add("showing")
-  greetingsIntroText.classList.add("hidden");
-  weather.classList.add("showing");
-  todo.classList.add("showing");
+  if (userName) {
+    setUserNameLocalStorage(userName);
+    // DOM제어
+    clock.classList.add("showing")
+    greetingsIntroText.classList.add("hidden");
+    weather.classList.add("showing");
+    todo.classList.add("showing");
+  } else {
+    alert('Please enter your name.')
+  }
 }
 
 const checkUserNameLocalStorage = () => {
