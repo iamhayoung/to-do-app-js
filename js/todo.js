@@ -12,8 +12,6 @@ const handleTodoStatus = (event) => {
   const id = parseInt(getId); // 취득한 id를 숫자로 만들어줌
   const li = event.target.parentNode;
 
-  console.log(id)
-
   TODOS_ARRAY.forEach(todo => {
     if (todo.id === id && (todo.status === "new")) {
       console.log('done')
@@ -25,7 +23,6 @@ const handleTodoStatus = (event) => {
       li.classList.remove("todo__checkbox__done");
     }
   });
-  console.log(TODOS_ARRAY)
 
   localStorage.setItem("toDo", JSON.stringify(TODOS_ARRAY));
 }
@@ -71,10 +68,9 @@ const printTodos = (todoValue) => {
   li.append(checkbox, label, delBtn);
 
   TODOS_OBJECT = { "id": number, "todo": todoValue, "status": "new" }
-
   TODOS_ARRAY.push(TODOS_OBJECT);
 
-  setTodosLocalStorage()
+  setTodosLocalStorage();
 
   // delBtn클릭했을때 삭제함수 실행
   delBtn.addEventListener('click', handleTodoDelete);
@@ -85,10 +81,10 @@ const printTodos = (todoValue) => {
 
 const loadTodos = () => {
   const lsTodos = localStorage.getItem("toDo");  // 로컬스토리지에 저장된 todo를 불러옴
+  const parsedLsTodos = JSON.parse(lsTodos); // 로컬스토리지 toDo를 객체로 변환
 
   if (lsTodos !== null) {
     // 로컬스토리지 toDo에 내용물이 있으면
-    const parsedLsTodos = JSON.parse(lsTodos); // 로컬스토리지 toDo를 객체로 변환
     parsedLsTodos.forEach(lsTodo => {
       const savedTodo = lsTodo.todo; // 로컬스토리지에 저장된 각각의 todo
       printTodos(savedTodo); // 로컬스토리지에서 불러온 Todo를 화면에 프린트
