@@ -6,19 +6,39 @@ let TODOS_ARRAY = [];
 let TODOS_OBJECT;
 
 // !투두 체크
-const handleTodoDone = (event) => {
-  const li = event.target.parentNode.parentNode;
-  // status
+// status가 done일때 또 누르면 스테이터스가 new로 바뀜
+const handleTodoStatus = (event) => {
+  const getId = event.target.id; // 선택한 todo의 id취득
+  const id = parseInt(getId); // 취득한 id를 숫자로 만들어줌
+  const li = event.target.parentNode;
+
+  console.log(id)
+
+  TODOS_ARRAY.forEach(todo => {
+    if (todo.id === id && (todo.status === "new")) {
+      console.log('done')
+      todo.status = "done";
+      li.classList.add("todo__checkbox__done");
+    } else if (todo.id === id && (todo.status === "done")) {
+      console.log('new')
+      todo.status = "new";
+      li.classList.remove("todo__checkbox__done");
+    }
+  });
+  console.log(TODOS_ARRAY)
+
+  localStorage.setItem("toDo", JSON.stringify(TODOS_ARRAY));
 }
 
 // 투두 삭제
 const handleTodoDelete = (event) => {
   const getId = event.target.parentNode.previousElementSibling.htmlFor; // 삭제할 todo의 id취득
   const id = parseInt(getId) // 취득한 id를 숫자로 만들어줌
-  console.log(id)
   const li = event.target.parentNode.parentNode;
   li.remove(); // 삭제버튼 클릭된 li 삭제
 
+  // 삭제할 id와 로컬스토리지의 id를 비교해서,
+  // 삭제할 id와 로컬스토리지의 id가 같지 않은 녀석들만 새로운 배열로 걸러냄
   const remainTodosArray = TODOS_ARRAY.filter(todo => {
     return todo.id !== id;
   });
@@ -59,8 +79,8 @@ const printTodos = (todoValue) => {
   // delBtn클릭했을때 삭제함수 실행
   delBtn.addEventListener('click', handleTodoDelete);
 
-  // checkbox클릭했을때 Done
-  checkbox.addEventListener('click', handleTodoDone);
+  // checkbox클릭했을때 todo status변경
+  checkbox.addEventListener('click', handleTodoStatus);
 }
 
 const loadTodos = () => {

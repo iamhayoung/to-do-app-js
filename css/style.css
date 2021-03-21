@@ -112,6 +112,10 @@ todo
   cursor: pointer;
 }
 
+.todo__checkbox__done {
+  text-decoration: line-through;
+}
+
 /*****************************
 flag
 *****************************/
