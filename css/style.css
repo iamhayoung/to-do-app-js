@@ -79,8 +79,14 @@ weather
   padding: 20px;
 }
 
+.weather__area,
+.weather__sky {
+  font-weight: 200;
+}
+
 .weather__temp {
   font-size: 26px;
+  font-weight: 600;
 }
 
 /*****************************

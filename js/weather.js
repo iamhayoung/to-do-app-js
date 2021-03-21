@@ -8,9 +8,9 @@ let lat;
 let lon;
 
 const printWeather = (temp, area, sky) => {
-  tempOutput.innerText = `${temp}°`;
-  areaOutput.innerText = area;
-  skyOutput.innerText = sky;
+  areaOutput.innerHTML = `${area}, `;
+  skyOutput.innerText = `${sky}, `;
+  tempOutput.innerHTML = `${temp}°`;
 }
 
 const getWeather = (data) => {
