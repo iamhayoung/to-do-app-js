@@ -38,7 +38,7 @@ const checkUserNameLocalStorage = () => {
 
   if (savedUserName) {
     // 로컬스토리지 userName 값이 존재한다면
-    greetingsOutputText.innerText = `Hello, ${savedUserName}🙌`;
+    greetingsOutputText.innerHTML = `Hello, ${savedUserName}<span class="waving-hand">👋</span>`;
 
     // DOM제어
     clock.classList.add("showing");
