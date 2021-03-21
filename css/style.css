@@ -173,7 +173,7 @@ todo
 }
 
 .todo__list {
-  max-height: 500px;
+  max-height: 330px;
   height: 100%;
   overflow-y: scroll;
 }
