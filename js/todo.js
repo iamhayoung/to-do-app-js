@@ -20,7 +20,7 @@ const handleTodoDelete = (event) => {
   console.log(event.target);
 }
 
-const printTodos = (savedTodo, savedId) => {
+const printTodos = (todoValue) => {
   // 요소 생성
   const li = document.createElement("li");
   const div = document.createElement("div");
@@ -29,18 +29,27 @@ const printTodos = (savedTodo, savedId) => {
   const delBtn = document.createElement("span");
 
   // todo텍스트 출력
-  label.innerText = savedTodo;
+  label.innerText = todoValue;
+
+  // toDo id번호 설정
+  let number = Math.floor(Math.random() * (9999999999 - 1000000000 + 1)) + 1000000000;
 
   // element 출력
   div.classList.add("todo__checkbox");
   delBtn.classList.add("todo__del-btn");
   delBtn.innerHTML = "<i class='fas fa-times'></i>";
-  label.setAttribute("for", savedId);
-  checkbox.setAttribute("id", savedId);
+  label.setAttribute("for", number);
+  checkbox.setAttribute("id", number);
   checkbox.setAttribute("type", "checkbox");
   todoList.appendChild(li);
   li.appendChild(div);
   div.append(checkbox, label, delBtn);
+
+  TODOS_OBJECT = { "id": number, "todo": todoValue, "status": "new" }
+
+  TODOS_ARRAY.push(TODOS_OBJECT);
+
+  setTodosLocalStorage()
 
   // delBtn클릭했을때 삭제함수 실행
   delBtn.addEventListener('click', handleTodoDelete);
@@ -51,41 +60,34 @@ const printTodos = (savedTodo, savedId) => {
 
 const loadTodos = () => {
   const lsTodos = localStorage.getItem("toDo");  // 로컬스토리지에 저장된 todo를 불러옴
-  const parsedLsTodos = JSON.parse(lsTodos); // 로컬스토리지 toDo를 객체로 변환
   console.log(TODOS_ARRAY)
 
-  if (lsTodos) {
+  if (lsTodos !== null) {
     // 로컬스토리지 toDo에 내용물이 있으면
-    // TODOS_ARRAY.push(parsedLsTodos)
+    const parsedLsTodos = JSON.parse(lsTodos); // 로컬스토리지 toDo를 객체로 변환
     console.log("yeah")
     console.log(TODOS_ARRAY)
     parsedLsTodos.forEach(lsTodo => {
       const savedTodo = lsTodo.todo; // 로컬스토리지에 저장된 각각의 todo
-      const savedId = lsTodo.id;
-      printTodos(savedTodo, savedId); // 로컬스토리지에서 불러온 Todo를 화면에 프린트
+      printTodos(savedTodo); // 로컬스토리지에서 불러온 Todo를 화면에 프린트
     })
-    } else {
-      // 로컬스토리지 toDo에 내용물이 없으면
-      console.error("there's nothing todo")
-    }
+  } else {
+    // 로컬스토리지 toDo에 내용물이 없으면
+    console.error("there's nothing todo")
+    return;
+  }
 }
 
 const setTodosLocalStorage = () => {
   localStorage.setItem("toDo", JSON.stringify(TODOS_ARRAY));
-
-  loadTodos(); // 투두를 로컬스토리지에서 불러옴
 }
 
 const handleTodoSubmit = (event) => {
   event.preventDefault();
-  let todosValue = todoInput.value;
-  let number = Math.floor(Math.random() * (9999999999 - 1000000000 + 1)) + 1000000000;
-  TODOS_OBJECT = { "id": number, "todo": todosValue, "status": "new" }
+  let todoValue = todoInput.value;
 
-  if (todosValue) {
-    TODOS_ARRAY.push(TODOS_OBJECT);
-    console.log(TODOS_ARRAY)
-    setTodosLocalStorage(); // 로컬스토리지에 투두어레이 저장
+  if (todoValue) {
+    printTodos(todoValue); // 투두출력
     todoForm.reset(); // todo 입력하고 submit후에는 todoInput창을 clear
   } else {
     // todo가 입력되지 않은채로 submit하면 에러창 표시
@@ -94,7 +96,7 @@ const handleTodoSubmit = (event) => {
 }
 
 const todoInit = () => {
-  loadTodos();
+  loadTodos(); // 이건 확실히 필요함
   todoForm.addEventListener("submit", handleTodoSubmit);
 }
 
