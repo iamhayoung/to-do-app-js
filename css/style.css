@@ -182,6 +182,10 @@ todo
   max-height: 340px;
   height: 100%;
   overflow-y: scroll;
+  position: relative;
+  padding-bottom: 80px;
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
 
 .todo__form {
@@ -199,7 +203,7 @@ todo
 
 .todo__checkbox {
   position: relative;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   padding: 20px 50px;
   transition: 0.2s;
   cursor: pointer;
