@@ -308,6 +308,10 @@ input[type='checkbox']:checked + label:after {
 }
 
 @media only screen and (max-width: 767px) {
+  .todo__form {
+    margin-bottom: 15px;
+  }
+
   .todo__input {
     height: 47px;
     padding: 10px 25px;
@@ -411,6 +415,13 @@ footer
   opacity: 1;
   visibility: visible;
   transition: 0.4s ease-in-out;
+}
+
+@media only screen and (max-width: 767px) {
+  [data-tooltip]:before,
+  [data-tooltip]:after {
+    display: none;
+  }
 }
 
 /*****************************
