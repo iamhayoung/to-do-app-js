@@ -37,7 +37,7 @@ a {
 }
 
 /*****************************
-container
+animations
 *****************************/
 @keyframes fadeIn {
   from {
@@ -48,6 +48,36 @@ container
   }
 }
 
+@keyframes wavingHand {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/*****************************
+container
+*****************************/
 .container {
   width: 100%;
   height: 100%;
@@ -85,6 +115,7 @@ weather
   top: 0;
   right: 0;
   padding: 20px;
+  animation: fadeIn 0.5s linear;
 }
 
 .weather__area,
@@ -103,6 +134,7 @@ clock
 .clock {
   display: none;
   position: relative;
+  animation: fadeIn 0.5s linear;
 }
 
 .clock__output {
@@ -115,6 +147,7 @@ greetings
 .greetings {
   margin-bottom: 30px;
   position: relative;
+  animation: fadeIn 0.5s linear;
 }
 
 .greetings__form,
@@ -151,33 +184,6 @@ greetings
   animation: wavingHand 2.5s infinite;
 }
 
-@keyframes wavingHand {
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(20deg);
-  }
-  20% {
-    transform: rotate(-8deg);
-  }
-  30% {
-    transform: rotate(14deg);
-  }
-  40% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  60% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
 /*****************************
 todo
 *****************************/
@@ -186,6 +192,7 @@ todo
   position: relative;
   max-width: 470px;
   width: 100%;
+  animation: fadeIn 0.5s linear;
 }
 
 .todo__list {
@@ -219,6 +226,7 @@ todo
   padding: 20px 60px;
   transition: 0.2s;
   cursor: pointer;
+  animation: fadeIn 0.5s linear;
 }
 
 .todo__checkbox:hover {
