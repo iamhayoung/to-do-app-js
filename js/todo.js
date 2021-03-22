@@ -5,6 +5,14 @@ const todoForm = document.querySelector("#js-todoForm"),
 let TODOS_ARRAY = [];
 let TODOS_OBJECT;
 
+// 유저명, 투두 리셋
+const handleReset = () => {
+  localStorage.removeItem("userName");
+  localStorage.removeItem("toDo");
+  location.reload();
+  return false;
+}
+
 // !투두 체크
 // status가 done일때 또 누르면 스테이터스가 new로 바뀜
 const handleTodoStatus = (event) => {
@@ -159,6 +167,14 @@ const handleTodoSubmit = (event) => {
 const todoInit = () => {
   loadTodos();
   todoForm.addEventListener("submit", handleTodoSubmit);
+  resetBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to delete all data including your name and to-dos?")) {
+      console.log('Okay');
+      handleReset();
+    } else {
+      console.log('Cancel');
+    }
+  });
 }
 
 todoInit();

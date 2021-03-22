@@ -4,7 +4,8 @@ const greetingsForm = document.querySelector("#js-greetingsForm"),
   greetingsIntroText = document.querySelector("#js-greetingsIntroText"),
   clock = document.querySelector("#js-clock"),
   weather = document.querySelector("#js-weather"),
-  todo = document.querySelector("#js-todo");
+  todo = document.querySelector("#js-todo"),
+  resetBtn = document.querySelector("#js-resetBtn");
 
 const printGreetings = (userName) => {
   greetingsOutputText.innerHTML = `Hello, ${userName}<span class="waving-hand">👋</span>`;
@@ -28,6 +29,7 @@ const handleGreetingsSubmit = (event) => {
     greetingsIntroText.classList.add("hidden");
     weather.classList.add("showing");
     todo.classList.add("showing");
+    resetBtn.classList.add("showing");
   } else {
     alert('Please enter your name.')
   }
@@ -45,6 +47,7 @@ const checkUserNameLocalStorage = () => {
     greetingsOutputText.classList.add("showing");
     weather.classList.add("showing");
     todo.classList.add("showing");
+    resetBtn.classList.add("showing");
   } else {
     // 로컬스토리지 userName 값이 존재하지 않는다면
     // DOM제어
