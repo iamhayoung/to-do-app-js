@@ -36,6 +36,15 @@ a {
   text-decoration: none;
 }
 
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
 /*****************************
 animations
 *****************************/
@@ -310,7 +319,7 @@ footer
 *****************************/
 .github-logo {
   position: fixed;
-  right: 20px;
+  left: 20px;
   bottom: 20px;
 }
 
@@ -326,6 +335,74 @@ footer
 
 .github-logo:active {
   transform: scale(0.7);
+}
+
+.reset-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+.reset-btn i {
+  font-size: 25px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.reset-btn:hover i {
+  opacity: 0.5;
+}
+
+.reset-btn:active {
+  transform: scale(0.7);
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  position: absolute;
+  left: 50%;
+  margin: 0 auto;
+  transform: translate(-50%);
+  -webkit-font-smoothing: antialiased;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 9;
+  transition: 0.6s ease-in-out 0.4s;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+[data-tooltip]:before {
+  content: '';
+  height: 0;
+  width: 0;
+  top: calc(100% + -19px);
+  left: -13px;
+  border-style: solid;
+  border-width: 8px;
+  border-color: transparent transparent transparent rgba(134, 147, 171, 0.7);
+}
+
+[data-tooltip]:after {
+  box-sizing: border-box;
+  content: attr(data-tooltip);
+  padding: 5px 12px;
+  top: calc(100% - 27px);
+  left: -135px;
+  background: rgba(134, 147, 171, 0.7);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 20px;
+  white-space: nowrap;
+  z-index: 9;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.4s ease-in-out 0.3s;
 }
 
 /*****************************
