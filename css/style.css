@@ -1,49 +1,5 @@
-/*****************************
-reset
-*****************************/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: #111;
-}
-
-input {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-ul,
-li {
-  list-style: none;
-}
-
-input {
-  border: none;
-  outline: none;
-}
-
-input[type='checkbox'] {
-  display: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-button {
-  padding: 0;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  appearance: none;
-  cursor: pointer;
-}
+@import 'variables.css';
+@import 'reset.css';
 
 /*****************************
 animations
@@ -102,7 +58,7 @@ container
   background-repeat: no-repeat;
   background-attachment: fixed;
   animation: fadeIn 0.5s linear;
-  color: #fff;
+  color: var(--white-color);
 }
 
 .container:before {
@@ -113,6 +69,12 @@ container
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    padding: 15px;
+  }
 }
 
 /*****************************
@@ -137,6 +99,12 @@ weather
   font-weight: 600;
 }
 
+@media only screen and (max-width: 767px) {
+  .weather {
+    padding: 15px;
+  }
+}
+
 /*****************************
 clock
 *****************************/
@@ -148,6 +116,12 @@ clock
 
 .clock__output {
   font-size: 115px;
+}
+
+@media only screen and (max-width: 767px) {
+  .clock__output {
+    font-size: 59px;
+  }
 }
 
 /*****************************
@@ -167,8 +141,9 @@ greetings
 }
 
 .greetings__intro-text {
-  font-size: 50px;
   margin-bottom: 30px;
+  font-size: 50px;
+  text-align: center;
 }
 
 .greetings__input {
@@ -179,8 +154,7 @@ greetings
   text-align: center;
   border-radius: 40px;
   color: #333;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
-    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  box-shadow: var(--box-shadow);
 }
 
 .greetings__output-text {
@@ -191,6 +165,22 @@ greetings
   margin-left: 5px;
   display: inline-block;
   animation: wavingHand 2.5s infinite;
+}
+
+@media only screen and (max-width: 767px) {
+  .greetings__intro-text {
+    font-size: 34px;
+    margin-bottom: 20px;
+  }
+
+  .greetings__output-text {
+    font-size: 27px;
+  }
+
+  .greetings__input {
+    height: 60px;
+    font-size: 22px;
+  }
 }
 
 /*****************************
@@ -225,8 +215,7 @@ todo
   font-size: 20px;
   border-radius: 40px;
   color: #333;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
-    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  box-shadow: var(--box-shadow);
 }
 
 .todo__checkbox {
@@ -264,7 +253,7 @@ todo
   top: 50%;
   left: -38px;
   margin-top: -8px;
-  background: #fff;
+  background: var(--white-color);
   border-radius: 50%;
 }
 
@@ -277,8 +266,8 @@ todo
   top: 50%;
   left: -50px;
   margin-top: -16px;
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
+  border-right: 2px solid var(--white-color);
+  border-bottom: 2px solid var(--white-color);
   opacity: 0;
   transform: rotate(45deg) translate3d(0, 2px, 0) scale3d(0.7, 0.7, 1)
     translate(20px, -50%);
@@ -286,7 +275,7 @@ todo
 }
 
 input[type='checkbox']:checked + label:before {
-  background: #1fd4aa;
+  background: var(--green-color);
 }
 input[type='checkbox']:checked + label:after {
   opacity: 1;
@@ -307,11 +296,33 @@ input[type='checkbox']:checked + label:after {
 }
 
 .todo__checkbox:hover .todo__del-btn:hover {
-  color: red;
+  color: var(--red-color);
+}
+
+.todo__checkbox:hover .todo__del-btn:active {
+  color: var(--red-color);
 }
 
 .todo__checkbox__done label {
   text-decoration: line-through;
+}
+
+@media only screen and (max-width: 767px) {
+  .todo__input {
+    height: 47px;
+    padding: 10px 25px;
+    font-size: 18px;
+  }
+
+  .todo__checkbox {
+    padding: 15px 60px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .todo__list {
+    max-height: 215px;
+  }
 }
 
 /*****************************
@@ -325,7 +336,7 @@ footer
 
 .github-logo i {
   font-size: 32px;
-  color: #fff;
+  color: var(--white-color);
   transition: 0.3s;
 }
 
@@ -346,7 +357,7 @@ footer
 
 .reset-btn i {
   font-size: 25px;
-  color: #fff;
+  color: var(--white-color);
   transition: 0.3s;
 }
 
@@ -377,7 +388,7 @@ footer
   left: -13px;
   border-style: solid;
   border-width: 8px;
-  border-color: transparent transparent transparent rgba(134, 147, 171, 0.7);
+  border-color: transparent transparent transparent var(--dark-sky-color);
 }
 
 [data-tooltip]:after {
@@ -386,8 +397,8 @@ footer
   padding: 5px 12px;
   top: calc(100% - 27px);
   left: -135px;
-  background: rgba(134, 147, 171, 0.7);
-  color: #fff;
+  background: var(--dark-sky-color);
+  color: var(--white-color);
   font-size: 14px;
   font-weight: 600;
   border-radius: 20px;

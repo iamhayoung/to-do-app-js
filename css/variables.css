@@ -1,0 +1,11 @@
+:root {
+  /* Colors */
+  --white-color: #fff;
+  --red-color: #ec1f30;
+  --green-color: #1fd4aa;
+  --dark-sky-color: rgba(134, 147, 171, 0.7);
+
+  /* Box shadow */
+  --box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
