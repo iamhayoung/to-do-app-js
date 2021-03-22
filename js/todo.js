@@ -79,6 +79,48 @@ const printTodos = (todoValue) => {
   checkbox.addEventListener('click', handleTodoStatus);
 }
 
+const printSavedTodos = (savedTodo, savedStatus) => {
+    // 요소 생성
+  const li = document.createElement("li");
+  const label = document.createElement("label");
+  const checkbox = document.createElement("input");
+  const delBtn = document.createElement("span");
+
+  // todo텍스트 출력
+  label.innerText = savedTodo;
+
+  // toDo id번호 설정
+  let number = Math.floor(Math.random() * (9999999999 - 1000000000 + 1)) + 1000000000;
+
+  // element 출력
+  li.classList.add("todo__checkbox");
+  delBtn.classList.add("todo__del-btn");
+  delBtn.innerHTML = "<i class='fas fa-times'></i>";
+  label.setAttribute("for", number);
+  checkbox.setAttribute("id", number);
+  checkbox.setAttribute("type", "checkbox");
+  todoList.appendChild(li);
+  li.append(checkbox, label, delBtn);
+
+  TODOS_OBJECT = { "id": number, "todo": savedTodo, "status": savedStatus }
+  if (savedStatus === "done") {
+    li.classList.add("todo__checkbox__done");
+    checkbox.checked = true;
+  } else if (savedStatus === "new") {
+    li.classList.remove("todo__checkbox__done");
+    checkbox.checked = false;
+  }
+  TODOS_ARRAY.push(TODOS_OBJECT);
+
+  setTodosLocalStorage();
+
+  // delBtn클릭했을때 삭제함수 실행
+  delBtn.addEventListener('click', handleTodoDelete);
+
+  // checkbox클릭했을때 todo status변경
+  checkbox.addEventListener('click', handleTodoStatus);
+}
+
 const loadTodos = () => {
   const lsTodos = localStorage.getItem("toDo");  // 로컬스토리지에 저장된 todo를 불러옴
   const parsedLsTodos = JSON.parse(lsTodos); // 로컬스토리지 toDo를 객체로 변환
@@ -87,7 +129,8 @@ const loadTodos = () => {
     // 로컬스토리지 toDo에 내용물이 있으면
     parsedLsTodos.forEach(lsTodo => {
       const savedTodo = lsTodo.todo; // 로컬스토리지에 저장된 각각의 todo
-      printTodos(savedTodo); // 로컬스토리지에서 불러온 Todo를 화면에 프린트
+      const savedStatus = lsTodo.status;
+      printSavedTodos(savedTodo, savedStatus); // 로컬스토리지에서 불러온 Todo를 화면에 프린트
     })
   } else {
     // 로컬스토리지 toDo에 내용물이 없으면
