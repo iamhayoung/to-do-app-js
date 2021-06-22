@@ -1,6 +1,9 @@
 # Project Overview
 
+<a href="https://nomadcoders.co/" target="_blank">Nomad Coders</a>에서 진행한 바닐라 JS 챌린지에서
 Vanilla JavaScript로 구현한 To-do 리스트입니다.
+<br>
+<a href="https://nomadcoders.co/community/thread/572" target="_blank">바닐라 JS 챌린지 10기</a>의 우수작으로 선정되었습니다.
 
 ## Demo
 
