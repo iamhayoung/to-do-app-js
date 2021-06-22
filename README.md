@@ -9,12 +9,13 @@ Vanilla JavaScript로 구현한 To-do 리스트입니다.
 
 ## 개발 기간
 
-2021/3/20~2021/3/22 (3일 간)
+2021/3/20~2021/3/22 (3일간)
 
 ## 사용 기술
 
 * HTML/CSS
 * Vanilla JavaScript
+* <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API</a>
 
 ## 구현 내용
 
