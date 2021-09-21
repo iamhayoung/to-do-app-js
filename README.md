@@ -32,3 +32,4 @@ Vanilla JavaScript로 구현한 To-do 리스트입니다.
 * 현재 위치를 기반으로 한 날씨 정보 제공 (OpenWeatherMap API 이용)
 * 배경 화면을 랜덤으로 표시
 * 유저명, To-do 초기화
+* 반응형 
